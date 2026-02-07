@@ -63,8 +63,8 @@ export const MOCK_STORE = {
             name: `Prof. Faculty ${i + 6}`,
             designation: (i % 5 === 0 ? "Associate Professor" : "Assistant Professor") as Faculty["designation"],
             phd_status: i % 3 === 0,
-            research_citations: Math.floor(Math.random() * 50),
-            consultancy_amt: Math.random() > 0.8 ? Math.floor(Math.random() * 5) : 0
+            research_citations: 10 + (i * 13) % 50,
+            consultancy_amt: (i % 4 === 0) ? (i % 5) + 1 : 0
         }))
     ] as Faculty[],
 
@@ -105,9 +105,9 @@ export const MOCK_STORE = {
             course_code: `CS400${i}`,
             name: `Elective Subject ${i + 1}`,
             faculty_id: `F${i + 5}`,
-            co_attainment_score: 2.0 + (Math.random()),
+            co_attainment_score: 2.0 + (i * 0.1) % 1.0,
             mapping_strength: 2.5,
-            files_status: { syllabus: true, lesson_plan: true, model_answers: Math.random() > 0.2 },
+            files_status: { syllabus: true, lesson_plan: true, model_answers: i % 3 !== 0 },
             po_attainment: { PO1: 2.2, PO2: 2.3, PO3: 2.1 }
         }))
     ] as Course[],

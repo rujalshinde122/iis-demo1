@@ -13,11 +13,13 @@ import { cn } from "@/lib/utils"
 export default function DashboardPage() {
     // Generate PO Coverage Data (Mock logic based on "real" data structure)
     // In a real app, this would be computed from the Course-CO-PO mapping
+    // Generate PO Coverage Data (Mock logic based on "real" data structure)
+    // In a real app, this would be computed from the Course-CO-PO mapping
     const poCoverage = Array.from({ length: 12 }).map((_, i) => {
         const poId = `PO${i + 1} `
-        // Mock count: Randomly assign activity counts to POs
-        // weighted to show most POs have coverage
-        const count = Math.floor(Math.random() * 8) + (i > 9 ? 0 : 2)
+        // Fixed mock count to ensure consistent server/client rendering
+        // pseudo-random but deterministic: (i * 7 + 3) % 9
+        const count = (i > 9) ? Math.floor((i * 3) % 4) : Math.floor((i * 7 + 3) % 9) + 1
         return { id: poId, count }
     })
 
